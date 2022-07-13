@@ -1,5 +1,6 @@
 # cmder-blog
 跟着ysh老师git和github项目
+#步骤
 创建虚拟环境 可以使用anaconda（先下载anaconda）
 然后在命令提示符（cmd）里执行conda create -n envsname(虚拟环境的名字) python=3.6
 然后激活虚拟环境 执行 conda activate envsname(虚拟环境的名字) （虚拟环境激活后最左边会显示虚拟环境的名字）
