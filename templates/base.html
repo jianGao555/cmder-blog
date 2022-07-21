@@ -1,5 +1,5 @@
 {% load staticfiles %}
-{% load notifications_tags %} 
+{% load notifications_tags %}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -7,94 +7,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'base.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'blog/blog1.css' %}">
+    <link rel="stylesheet" href="{% static '/font-awesome/css/font-awesome.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.css' %}">
     <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'notifications/notify.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
     {% block header_extends %}{% endblock %}
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'home' %}">聪明蛋儿的个人学习小站</a>
-                <button class="navbar-toggle collapsed"  data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <div id="navbar-collapse" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li class="{% block nav_home_active %}{% endblock %}">
-                        <a href="{% url 'home' %}">首页</a>
-                    </li>
-                    <li class="{% block nav_blog_active %}{% endblock %}">
-                        <a href="{% url 'blog_list' %}">博客</a>
-                    </li>
-                </ul>
+<div class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'home' %}">聪明蛋儿的个人学习小站</a>
+            <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar-collapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="{% block nav_home_active %}{% endblock %}">
+                    <a href="{% url 'home' %}">首页</a>
+                </li>
+                <li class="{% block nav_blog_active %}{% endblock %}">
+                    <a href="{% url 'blog_list' %}">博客</a>
+                </li>
+            </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    {% if not user.is_authenticated %}
-                        <li>
-                            {% if request.GET.from %}
-                                <a href="{% url 'login' %}?from={{ request.GET.from }}">登录</a>
-                            {% else %}
-                                <a href="{% url 'login' %}?from={{ request.get_full_path }}">登录</a>
-                            {% endif %}
-                        </li>
-                        <li>
-                            {% if request.GET.from %}
-                                <a href="{% url 'register' %}?from={{ request.GET.from }}">注册</a>
-                            {% else %}
-                                <a href="{% url 'register' %}?from={{ request.get_full_path }}">注册</a>
-                            {% endif %}
-                        </li>
+            <ul class="nav navbar-nav navbar-right">
+                {% if not user.is_authenticated %}
+                <li>
+                    {% if request.GET.from %}
+                    <a href="{% url 'login' %}?from={{ request.GET.from }}">登录</a>
                     {% else %}
-                        {% notifications_unread as unread_count %}
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                                你好，{{ user.get_nickname_or_username }}
-                                <span class="badge unread-count live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span>
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{% url 'user_info' %}">个人资料</a></li>
-                                <li><a href="{% url 'my_notifications' %}">我的消息 <span class="badge unread-count live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span></a></li>
-                                {% if user.is_staff or user.is_superuser %}
-                                    <li><a href="{% url 'admin:index' %}">后台管理</a></li>
-                                {% endif %}
-                                <li><a href="{% url 'logout' %}?from={{ request.get_full_path }}">退出</a></li>
-                            </ul>
-                        </li>
+                    <a href="{% url 'login' %}?from={{ request.get_full_path }}">登录</a>
                     {% endif %}
-                    <li>
-                        <form class="navbar-form search-form" action="{% url 'search' %}">
-                            <div class="form-group">
-                                <input type="text" name="wd" class="form-control" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
+                </li>
+                <li>
+                    {% if request.GET.from %}
+                    <a href="{% url 'register' %}?from={{ request.GET.from }}">注册</a>
+                    {% else %}
+                    <a href="{% url 'register' %}?from={{ request.get_full_path }}">注册</a>
+                    {% endif %}
+                </li>
+                {% else %}
+                {% notifications_unread as unread_count %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        你好，{{ user.get_nickname_or_username }}
+                        <span class="badge unread-count live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'user_info' %}">个人资料</a></li>
+                        <li><a href="{% url 'my_notifications' %}">我的消息 <span
+                                class="badge unread-count live_notify_badge">{% if unread_count > 0 %}{{ unread_count }}{% endif %}</span></a>
+                        </li>
+                        {% if user.is_staff or user.is_superuser %}
+                        <li><a href="{% url 'admin:index' %}">后台管理</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'logout' %}?from={{ request.get_full_path }}">退出</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+                <li>
+                    <form class="navbar-form search-form" action="{% url 'search' %}">
+                        <div class="form-group">
+                            <input type="text" name="wd" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </li>
+            </ul>
         </div>
     </div>
+</div>
 
-    {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-    <!-- footer -->
-    <div class="footer">
-        <div class="website-info">
-            <p>陕ICP备2022008342号-1 Copyright©2022 cmder.top 版权所有</p>
-            <p>意见反馈或联系我（1532829287@qq.com）</p>
-        </div>
+<!-- footer -->
+<div class="footer">
+    <div class="website-info">
+        <p>陕ICP备2022008342号-1 Copyright©2022 cmder.top 版权所有</p>
+        <p>意见反馈或联系我（1532829287@qq.com）</p>
     </div>
+</div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         //底部栏置底
         //窗体改变大小事件
         $(window).resize(function(){
@@ -136,8 +141,10 @@
             }
             $('.live_notify_badge').text(unread_count);
         }
-    </script>
-    {% register_notify_callbacks callbacks='my_special_notification_callback' %}
-    {% block script_extends %}{% endblock %}
+
+
+</script>
+{% register_notify_callbacks callbacks='my_special_notification_callback' %}
+{% block script_extends %}{% endblock %}
 </body>
 </html>

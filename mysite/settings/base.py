@@ -11,13 +11,14 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+from .simpleui_settings import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -150,7 +151,6 @@ QQ_APP_KEY = os.environ['QQ_APP_KEY']
 QQ_REDIRECT_URL = os.environ['QQ_REDIRECT_URL']
 QQ_STATE = os.environ['QQ_STATE']
 '''
-
 
 # django-notifications-hq设置
 DJANGO_NOTIFICATIONS_CONFIG = {

@@ -3,7 +3,7 @@
     padding: 0;
 }
 body {
-    margin-top: 70px!important;
+    margin-top: 50px!important;
 }
 ul {
     list-style-type: none!important; 
@@ -41,4 +41,10 @@ div.website-info p {
 
 .unread-count {
     background-color: #d9534f!important;
+}
+
+div.row {
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: -10px;
 }

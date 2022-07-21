@@ -1,0 +1,43 @@
+{% for article in articles %}
+    <article class="d-block bg-white hvr-float">
+
+        <div class="media d-block">
+            <div class="media-body py-3 pl-1 overflow-hidden">
+                <div class="index-article-header">
+                    <a href="#" class="label ">{{ article.category.name }}<i
+                            class="position-absolute c-arrow"></i></a>
+                    <h2 class="d-inline article-title"><a href="#"
+                                                          class="text-dark">{{ article.title }}</a></h2>
+                    {% if article.place_top %}<span class="new-icon">置顶</span>{% endif %}
+                </div>
+                <div class="article-summary">
+                    <p class="text-wrap text-secondary">
+                        {{ article.summary|truncatechars:170 }}{% if article.summary|length > 150 %}
+                            ...{% endif %}</p>
+                </div>
+            </div>
+
+            <div class="article-relative-meta">
+
+        <span class="float-left">
+            <a href="#"><i class="fa fa-calendar c4"></i>{{ article.create_time|date:'Y年m月d日' }}</a>
+            <a href="#"><i
+                    class="fa fa-comments c5"></i>{{ 0 }}评论</a>
+            <a href="#"><i class="fa fa-eye c6"></i>{{ article.views|default:0 }}阅读</a>
+        </span>
+                <span class="visible-xs float-left">
+            <a href="#"><i class="fa fa-heart c7"></i>{{ article.loves|default:0 }}喜欢</a>
+            <a {% if article.creator.link %}href="{{ article.creator.link }}"{% endif %}><i
+                    class="fa fa-user c8"></i>{% firstof article.creator.nickname article.creator.username %}</a>
+        </span>
+                <span class="float-right">
+            <a class="mr-0" href="#" title="阅读全文">阅读全文<i class="fa fa-chevron-circle-right"></i></a>
+        </span>
+            </div>
+        </div>
+    </article>
+{% empty %}
+    <div class="d-block bg-white mb-3 text-center"
+         style="width: 100%;font-size: 18px;font-weight: bold;padding-top: 15%;height: 300px;">暂时还没有发布的文章！
+    </div>
+{% endfor %}

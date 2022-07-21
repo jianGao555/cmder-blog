@@ -14,7 +14,7 @@ from blog.models import Blog
 
 def get_7_days_hot_blogs():
     today = timezone.now().date()
-    date = today - datetime.timedelta(days=7)
+    date = today - datetime.timedelta(days=30)
     blogs = Blog.objects \
                 .filter(read_details__date__lt=today, read_details__date__gte=date) \
                 .values('id', 'title') \
