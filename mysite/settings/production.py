@@ -25,6 +25,7 @@ DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # Database
+
 DATABASE_PASSWORD = os.environ['DATABASE_PASSWORD']
 DATABASES = {
     'default': {
@@ -36,7 +37,14 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+'''
 # 发送邮件设置
 # https://docs.djangoproject.com/en/2.0/ref/settings/#email
 # https://docs.djangoproject.com/en/2.0/topics/email/

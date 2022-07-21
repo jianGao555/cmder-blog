@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 
 class OAuthRelationship(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    openid = models.CharField(max_length=128)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
+    openid = models.CharField(max_length=128,null=True, blank=True)
 
     OAUTH_TYPE_CHOICES = (
             (0, "QQ"),
@@ -12,7 +12,7 @@ class OAuthRelationship(models.Model):
             (2, "Sina"),
             (3, "Github"),
         )
-    oauth_type = models.IntegerField(default=0, choices=OAUTH_TYPE_CHOICES)
+    oauth_type = models.IntegerField(default=0, choices=OAUTH_TYPE_CHOICES,null=True, blank=True)
 
     def __str__(self):
         return "<OAuthRelationship: %s>" % self.user.username

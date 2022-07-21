@@ -144,11 +144,16 @@ CACHES = {
 }
 
 # QQ登录配置
-QQ_APP_ID = ''
-# QQ_APP_KEY = os.environ['QQ_APP_KEY']
-QQ_APP_KEY=''
-QQ_REDIRECT_URL = 'http://cmder.top/user/login_by_qq'
-QQ_STATE = ''
+'''
+QQ_APP_ID = os.environ['QQ_APP_ID']
+QQ_APP_KEY = os.environ['QQ_APP_KEY']
+QQ_REDIRECT_URL = os.environ['QQ_REDIRECT_URL']
+QQ_STATE = os.environ['QQ_STATE']
+'''
+QQ_APP_ID='102017944'
+QQ_APP_KEY='NfldIkyznNjsoW1J'
+QQ_REDIRECT_URL='https://cmder.top/user/login_by_qq'
+QQ_STATE='cmder'
 
 # django-notifications-hq设置
 DJANGO_NOTIFICATIONS_CONFIG = {
