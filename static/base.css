@@ -48,3 +48,10 @@ div.row {
     margin-left: 0px;
     margin-top: -10px;
 }
+
+div.item img{
+height:100%;
+width:100%;
+overflow:hidden;
+object-fit:cover;
+}

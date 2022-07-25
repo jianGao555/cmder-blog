@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
             <div class="panel panel-default">
-                <div class="panel-heading">{% block blog_list_title %}博客列表{% endblock %}</div>
+                <div class="panel-heading" style="margin-top:10px" >{% block blog_list_title %}博客列表{% endblock %}</div>
                 <div class="panel-body">
                     {% for blog in blogs %}
                     <article class="d-block bg-white hvr-float">
@@ -86,7 +86,7 @@
         </div>
         <div class="hidden-xs col-sm-4 col-md-3 col-lg-2">
             <div class="panel panel-default">
-                <div class="panel-heading">博客分类</div>
+                <div class="panel-heading" style="margin-top:10px" >博客分类</div>
                 <div class="panel-body">
                     <ul class="blog-types">
                         {% for blog_type in blog_types %}

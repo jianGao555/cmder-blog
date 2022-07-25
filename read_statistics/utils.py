@@ -26,7 +26,7 @@ def get_seven_days_read_data(content_type):
     today = timezone.now().date()
     dates = []
     read_nums = []
-    for i in range(7, 0, -1):
+    for i in range(14, -1, -1):
         date = today - datetime.timedelta(days=i)
         dates.append(date.strftime('%m/%d'))
         read_details = ReadDetail.objects.filter(content_type=content_type, date=date)

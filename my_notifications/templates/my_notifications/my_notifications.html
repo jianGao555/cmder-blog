@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top:10px">
             <div class="col-md-10 col-md-offset-1">
                 <a class="btn btn-primary" href="{% url 'notifications:mark_all_as_read' %}?next={% url 'my_notifications' %}">全部标记成已读</a>
                 <a class="btn btn-danger" href="{% url 'delete_my_read_notifications' %}">删除已读消息</a>
