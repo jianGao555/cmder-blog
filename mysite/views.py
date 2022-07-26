@@ -14,7 +14,7 @@ from blog.models import Blog
 
 def get_7_days_hot_blogs():
     today = timezone.now().date()
-    date = today - datetime.timedelta(days=30)
+    date = today - datetime.timedelta(days=7)
     blogs = Blog.objects \
                 .filter(read_details__date__lt=today, read_details__date__gte=date) \
                 .values('id', 'title') \
@@ -23,6 +23,10 @@ def get_7_days_hot_blogs():
     return blogs[:7]
 
 def home(request):
+    return render(request, 'home.html')
+
+
+def sort(request):
     blog_content_type = ContentType.objects.get_for_model(Blog)
     dates, read_nums = get_seven_days_read_data(blog_content_type)
 
@@ -38,7 +42,7 @@ def home(request):
     context['today_hot_data'] = get_today_hot_data(blog_content_type)
     context['yesterday_hot_data'] = get_yesterday_hot_data(blog_content_type)
     context['hot_blogs_for_7_days'] = hot_blogs_for_7_days
-    return render(request, 'home.html', context)
+    return render(request, 'sort.html', context)
 
 def my_notifications(request):
     context = {}

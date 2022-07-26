@@ -233,7 +233,7 @@ def send_verification_code(request):
             send_mail(
                 '绑定邮箱',
                 '验证码：%s' % code,
-                '2872402050@qq.com',
+                '1532829287@qq.com',
                 [email],
                 fail_silently=False,
             )

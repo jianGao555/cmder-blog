@@ -42,3 +42,16 @@ div.website-info p {
 .unread-count {
     background-color: #d9534f!important;
 }
+
+div.row {
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top: -10px;
+}
+
+div.item img{
+height:100%;
+width:100%;
+overflow:hidden;
+object-fit:cover;
+}

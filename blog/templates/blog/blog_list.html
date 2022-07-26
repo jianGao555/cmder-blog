@@ -8,7 +8,7 @@
 
 {% block header_extends %}
 <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
-
+<link rel="stylesheet" href="{% static 'blog/main.css' %}">
 {% endblock %}
 
 {# 页面内容 #}
@@ -17,13 +17,13 @@
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
             <div class="panel panel-default">
-                <div class="panel-heading" style="margin-top:10px" >{% block blog_list_title %}博客列表{% endblock %}</div>
-                <div class="panel-body">
-                    {% for blog in blogs %}
-                    <article class="d-block bg-white hvr-float">
-                        <div class="blog">
-                            <h3><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h3>
-                            <p class="blog-info">
+                <div class="panel-heading" style="margin-top:10px">{% block blog_list_title %}博客列表{% endblock %}</div>
+                <div class="panel-body content-wrapper">
+                    <ol class="post-list">
+                        {% for blog in blogs %}
+                        <li style="list-style:none;">
+                            <h2 class="post-list__post-title post-title"><a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a></h2>
+                            <p class="excerpt">
                                 <span class="glyphicon glyphicon-tag"></span> <a
                                     href="{% url 'blogs_with_type' blog.blog_type.pk %}">{{ blog.blog_type }}</a>&nbsp;&nbsp;
                                 <span class="glyphicon glyphicon-time"></span> {{ blog.created_time|date:"Y-m-d" }}&nbsp;&nbsp;
@@ -31,9 +31,30 @@
                                 评论({% get_comment_count blog %})&nbsp;&nbsp;
                                 点赞({% get_like_count blog %})
                             </p>
-                            <p>{{ blog.content|striptags|truncatechars:120 }}</p>
-                        </div>
-                    </article>
+
+                            <p class="excerpt">{{ blog.content|striptags|truncatechars:300 }}</p>
+
+                            <div class="post-list__meta">
+                                <time datetime="2018-04-23 00:00:00 +0000" class="post-list__meta--date date">
+                                    <img src="{% static 'blog/calendar.png' %}" width="20px"/>
+                                    {{ blog.created_time|date:"Y-m-d" }}
+                                </time>
+
+                                <a href="{% url 'blogs_with_type' blog.blog_type.pk %}">
+                                    <div class="post-list-icon-mate">
+                                        <span class="glyphicon glyphicon-tag">&nbsp;{{ blog.blog_type }}</span>
+                                    </div>
+                                </a>
+
+                                    <div class="post-list-small-mate">
+                                        <a class="btn-border-small"
+                                           href="{% url 'blog_detail' blog.pk %}">阅读全文 »
+                                        </a>
+                                    </div>
+                            </div>
+                            <hr class="post-list__divider"/>
+                        </li>
+                    </ol>
                     {% empty %}
                     <div class="blog">
                         <h3>暂无博客，敬请期待</h3>
@@ -86,7 +107,7 @@
         </div>
         <div class="hidden-xs col-sm-4 col-md-3 col-lg-2">
             <div class="panel panel-default">
-                <div class="panel-heading" style="margin-top:10px" >博客分类</div>
+                <div class="panel-heading" style="margin-top:10px">博客分类</div>
                 <div class="panel-body">
                     <ul class="blog-types">
                         {% for blog_type in blog_types %}
@@ -118,4 +139,7 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="{% static '/js/main.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/highlight.pack.js' %}"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}

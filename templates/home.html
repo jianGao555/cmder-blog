@@ -1,195 +1,119 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
 {% load staticfiles %}
+<head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cmder Home">
+    <meta name="keywords" content="Cmder,Homepage">
+    <meta name="author" content="Cmder">
+    <title>Cmder Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'index/assets/css/onlinewebfonts.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'index/assets/css/vno.css'%}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'index/assets/css/iconfont.css' %}"/>
+    <link rel="apple-touch-icon" href="{% static 'index/apple-touch-icon.png' %}"/>
+    <link rel="icon" href="{% static 'index/favicon.ico' %}"/>
+</head>
 
-{% block title %}
-聪明蛋儿的个人学习小站|首页
-{% endblock %}
+<body>
+<span class="mobile btn-mobile-menu">
+        <i class="social iconfont icon-list btn-mobile-menu__icon"></i>
+        <i class="social iconfont icon-angleup btn-mobile-close__icon hidden"></i>
+    </span>
+<header id="panel" class="panel-cover">
+    <div class="panel-main">
+        <div class="panel-main__inner panel-inverted">
+            <div class="panel-main__content">
+                <div class="ih-item circle effect right_to_left">
+                    <a href="#" title="" class="blog-button">
+                        <div class="img"><img src="{% static 'index/assets/img/logo5.jpg' %}" alt="img"
+                                              class="js-avatar iUp profilepic"></div>
+                        <div class="info iUp">
+                            <div class="info-back">
+                                <h2>
+                                    Fighting
+                                </h2>
+                                <p>
+                                    2022 · 自律
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <h1 class="panel-cover__title panel-title iUp">
+                    <a href="#" title="Dmego Home">Cmder</a>
+                </h1>
+                <p class="panel-cover__subtitle panel-subtitle iUp">Code Create Life</p>
+                <hr class="panel-cover__divider iUp"/>
+                <p id="description" class="panel-cover__description iUp">如何得与凉风约, 不共尘沙一并来!
+                    <br/>
+                    <strong>-「中牟道中」</strong>
+                </p>
+                <div class="navigation-wrapper iUp">
+                    <div>
+                        <nav class="cover-navigation cover-navigation--primary">
+                            <ul class="navigation">
+                                <li class="navigation__item">
+                                    <a href="/" class="blog-button">首页</a>
+                                </li>
+                                <li class="navigation__item">
+                                    <a href="{% url 'blog_list' %}" class="blog-button">博客</a>
+                                </li>
+                                <li class="navigation__item">
+                                    <a href="{% url 'sort' %}" class="blog-button" >热门</a>
+                                </li>
+                                <li class="navigation__item">
+                                    <a href="#" class="blog-button" target="_blank">关于</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="iUp">
+                        <nav class="cover-navigation navigation--social">
+                            <ul class="navigation">
+                                <li class="navigation__item">
+                                    <a href="https://github.com/jianGao555/" title="github" target="_blank">
+                                        <i class='social iconfont icon-github'></i>
+                                        <span class="label">github</span>
+                                    </a>
+                                </li>
+                                <li class="navigation__item">
+                                    <a href="#" title="cnblogs" target="_blank">
+                                        <i class='social iconfont icon-cnblogs'></i>
+                                        <span class="label">cnblogs</span>
+                                    </a>
+                                </li>
 
-{% block header_extends %}
-<link rel="stylesheet" href="{% static 'home.css' %}">
-<script src="//cdn.hcharts.cn/highcharts/highcharts.js"></script>
-{% endblock %}
-
-{% block nav_home_active %}active{% endblock %}
-
-{% block content %}
-
-
-<div class="container">
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<div class="carousel slide" id="carousel-41157">
-				<ol class="carousel-indicators">
-					<li data-slide-to="0" data-target="#carousel-41157"></li>
-					<li data-slide-to="1" data-target="#carousel-41157"></li>
-					<li data-slide-to="2" data-target="#carousel-41157" class="active"></li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="item">
-						<img alt="" src="static/images/default2.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								First Thumbnail label
-							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
-						</div>
-					</div>
-					<div class="item">
-						<img alt="" src="static/images/default1.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								Second Thumbnail label
-							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
-						</div>
-					</div>
-					<div class="item active">
-						<img alt="" src="static/images/default.jpg" />
-						<div class="carousel-caption">
-							<h4>
-								Third Thumbnail label
-							</h4>
-							<p>
-								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-							</p>
-						</div>
-					</div>
-				</div> <a class="left carousel-control" href="#carousel-41157" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-41157" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-			</div>
-		</div>
-	</div>
-
-
-<!-- 表格测试 DOM -->
-<div class="row clearfix">
-     <div class="col-md-12 column">
-	     <table class="table">
-		     <p style="text-align:center"><h1 style="text-align:center;margin-bottom:-20px">今日热门</h1></p>
-	<thead>
-		<tr>
-			<th>排名</th>
-			<th>题目</th>
-			<th>阅读量</th>
-		</tr>
-	</thead>
-	<tbody>
-	     {% for hot_data in today_hot_data %}
-		<tr>
-			<td>{{forloop.counter}}</td>
-			<td> <a href="{% url 'blog_detail' hot_data.content_object.pk %}">{{ hot_data.content_object.title }}</a></td>
-			<td>{{ hot_data.read_num }}</td>
-		</tr>
-	</tbody>
-                {% empty %}
-		<td>没有博客</td>
-                <td>今天暂时没有热门博客</td>
-		<td>0</td>
-                {% endfor %}
-</table>
-</div>
-</div>
-
-
-<div class="row clearfix">
-<div class="col-md-12 column">
-      <h2 style="text-align:center">前15日阅读量变化</h2>
-        <!-- 图表容器 DOM -->
-        <div id="container" style="min-width:100%;min-height:20%;"></div>
+                                <li class="navigation__item">
+                                    <a href="#" title="zhihu" target="_blank">
+                                        <i class='social iconfont icon-zhihu'></i>
+                                        <span class="label">zhihu</span>
+                                    </a>
+                                </li>
+                                <li class="navigation__item">
+                                    <a href="mailto:1532829287@qq.com" title="email">
+                                        <i class='social iconfont icon-email'></i>
+                                        <span class="label">email</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-cover--overlay cover-slate"></div>
     </div>
-    </div>
+    <!-- <div class="beian iUp">
+        <a class="icp" href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank">XXX</a>
+        <a class="gwab" href="http://www.beian.gov.cn/portal/recordQuery" target="_blank">XXX</a>
+    </div> -->
+</header>
 
-
-<!-- 热门内容 DOM -->
-<div class="row clearfix">
-    <div class="col-md-6 column">
-        <h2 style="text-align:center">
-            近7日热门博客
-        </h2>
-        <table class="table">
-        <tbody>
-             {% for hot_data in today_hot_data %}
-                <tr>
-                        <td>{{forloop.counter}}</td>
-                        <td> <a href="{% url 'blog_detail' hot_data.content_object.pk %}">{{ hot_data.content_object.title }}</a></td>
-                        <td>{{ hot_data.read_num }}</td>
-                </tr>
-        </tbody>
-                {% empty %}
-                <td>没有博客</td>
-                <td>近七日暂时没有热门博客</td>
-                <td>0</td>
-                {% endfor %}
-   </table>
-    </div>
-    <div class="col-md-6 column table-responsive" style="min-height:340px">
-        <h2 style="text-align:center">
-            30天热门博客
-        </h2>
-                <table class="table">
-        <tbody>
-             {% for hot_data in hot_blogs_for_7_days %}
-                <tr>
-                        <td>{{forloop.counter}}</td>
-                        <td> <a href="{% url 'blog_detail' hot_data.id %}">{{ hot_data.title }}</a></td>
-                        <td>{{ hot_data.read_num_sum }}</td>
-                </tr>
-        </tbody>
-                {% empty %}
-                <td>没有博客</td>
-                <td>本月暂时没有热门博客</td>
-                <td>0</td>
-                {% endfor %}
-   </table>
-    </div>
-</div>
-</div>
-<!-- 中间部分 -->
-
-<script>
-        // 图表配置
-        var options = {
-            chart: { type: 'line',
-	    backgroundColor: null,zoomType: 'x'},
-
-            title: { text: null },
-            xAxis: {
-                categories: {{ dates|safe }},   // x 轴分类
-                tickmarkPlacement: 'on',
-                title: { text: '前15日阅读量变化'},
-            },
-            yAxis: {
-                title: { text: null },
-                labels:{ enabled: false },
-                gridLineColor: '#eee',
-            },
-            series: [{                              // 数据列
-                name: '阅读量',                     // 数据列名
-                data: {{ read_nums }}               // 数据
-            }],
-            plotOptions: {
-                line: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-shadow: {
-  color: 'yellow',
-  width: 30,
-  offsetX: 0,
-  offsetY: 0
-},
-            legend: { enabled: false },
-            credits: { enabled: false },
-        };
-        // 图表初始化函数
-        var chart = Highcharts.chart('container', options);
-
-
-</script>
-
-{% endblock %}
+<script type="text/javascript" src="{% static 'index/assets/js/jquery.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'index/assets/js/main.js'%}"></script>
+<script type="text/javascript" src="{% static 'index/assets/json/images.json'%}"></script>
+</body>
+</html>
